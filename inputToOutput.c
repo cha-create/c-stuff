@@ -6,7 +6,7 @@
 int main() {
   int c, nl, nw, nc, state;
 
-
+  
   state = OUT;
   nl = nw = nc = 0;
   while((c = getchar()) != EOF) {
@@ -17,6 +17,11 @@ int main() {
     if(c == ' ' || c == '\n' || c == '\t') {
       state = OUT;
     }
+    if(c == '`') {
+      printf("Exiting...");
+      printf("Lines: %d, Words: %d, Chars: %d", nl, nw, nc);
+      return 0;
+    }
     else if (state == OUT) {
       state = IN;
       ++nw;
@@ -24,6 +29,5 @@ int main() {
     }
     putchar(c);
   }
-  printf("Lines: %d, Words: %d, Chars: %d", nl, nw, nc);
   return 0;
 }
