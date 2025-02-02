@@ -1,5 +1,13 @@
 #include <stdio.h>
 
+int tempConvert(int Fahrenheit) {
+  int celsius = 0;
+  celsius = (5.0 / 9.0) * (Fahrenheit-32);
+  return celsius;
+}
+
+
+
 int main() {
   float fahr, celsius;
   int lower, upper, step;
@@ -11,7 +19,7 @@ int main() {
   printf("Fahrenheit \t Celsius\n");
   fahr = upper;
   while(fahr >= lower) {
-    celsius = (5.0 / 9.0) * (fahr-32);
+    celsius = tempConvert(fahr);
     printf("%7.0f     |  %6.1f\n", fahr, celsius);
     fahr = fahr - step;
   }
