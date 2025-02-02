@@ -2,6 +2,29 @@
 #include <string.h>
 #define MAXLINE 1000
 
+int getlength(char string[], int limit);
+void copy(char to[], char from[]);
+
+
+int main() {
+  int len;
+  int max;
+  char line[MAXLINE];
+  char longest[MAXLINE];
+
+  max = 0;
+  while((len = getlength(line, MAXLINE)) > 0) {
+    if (len > max) {
+      max = len;
+      copy(longest, line); 
+      
+    }
+  }
+  if(max > 0) {
+    printf("\n%s", longest);
+  }
+  return 0;
+}
 
 
 int getlength(char s[], int lim) {
@@ -25,33 +48,4 @@ void copy(char to[], char from[]) {
   while((to[i] = from[i]) != '\0') {
     ++i;
   }
-}
-
-void exitProgram(char longstring[]) {
-    printf("%s", longstring);
-}
-
-int main() {
-  int len;
-  int max;
-  char line[MAXLINE];
-  char longest[MAXLINE];
-
-  max = 0;
-  while((len = getlength(line, MAXLINE)) > 0) {
-    if (len > max) {
-      max = len;
-      copy(longest, line); 
-      for (int i = 0; i < strlen(longest); ++i) {
-        char c = longest[i];
-        if (c == '`') {
-          exitProgram(longest);
-        }
-      }
-    }
-  }
-  if(max > 0) {
-    exitProgram(longest);
-  }
-  return 0;
 }
